@@ -9,22 +9,6 @@ const Task=require('./models/tasks');
 app.use('/',require('./routes'));
 app.set('view engine','ejs');
 app.set('views','./views');
-app.post('/create-note',function(req,res){
-    // console.log(req.body);
-    Task.create({
-        description:req.body.description,
-        category:req.body.category,
-        date:req.body.date
-    })
-    .then((newTask)=>{
-        console.log(newTask);
-        return res.redirect('back');
-    })
-    .catch((err)=>{
-        console.log("There's an error in creating contact");
-        return;
-    })
-})
 
 app.listen(port,function(err){
     if(err){

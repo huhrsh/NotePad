@@ -16,7 +16,9 @@ h1 {
 html {
     /* background-color: darkslategray; */
     background: linear-gradient(to bottom, #43c6ac, #191654);
-    background: linear-gradient(-30deg, #007991, #78ffd6);
+    background: linear-gradient(-30deg, #00a8ca, #78ffd6);
+    background-size: cover;
+    background-attachment: fixed;
 }
 html::-webkit-scrollbar{
     display:none;
@@ -83,8 +85,8 @@ html::-webkit-scrollbar{
     background-color: #ffffff80;
     font-size: 3vw;
     border: none;
-    color: #00296b;
-    caret-color: #00296b;
+    /* color: #00296b;
+    caret-color: #00296b; */
 }
 input[type=text]:focus{
     outline: none;
@@ -164,7 +166,6 @@ input[type=text]:focus{
 
 /* creating the button section  */
 .buttons{
-    background-color: red;
     width: 100%;
     height: 7vw;
     border-radius: 10px;
@@ -177,11 +178,13 @@ input[type=text]:focus{
 }
 
 .buttons button{
+    text-transform: uppercase;
     /* background-color:; */
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 3.4vw;
+    font-weight: 500;
     font-family: dongle;
     border-radius: 10px;
     width: 30%;
@@ -216,6 +219,7 @@ input[type=text]:focus{
 }
 .task-container{
     width: 100%;
+    height: auto;
     min-height: 10vw;
     display: flex;
     padding: 1%;
@@ -224,41 +228,72 @@ input[type=text]:focus{
     box-sizing: border-box;
     border-radius: 10px;
     background-color: #778da9;
+    background-color: #90e0ef;
+    background-color: #e3f2fd;
     border-bottom: 5px solid #1b263b70;
+    margin-bottom: 1vw;
     justify-content: space-between;
 }
 .list-content-date{
-    background-color: red;
+    /* background-color: red; */
     width: 80%;
-    height: 10vw;
+    height: auto;
+    min-height: 10vw;
     display: flex;
     flex-direction: column;
 }
+.note-description{
+    height: auto;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.708);
+    border-radius: 10px;
+    /* border-bottom: 4px solid #1b263b70; */
+    padding: 0;
+    padding-left:1% ;
+    margin: 0;
+    margin-bottom: 0.4vw;
+    width: 100%;
+    overflow: scroll;
+}
+.note-description::-webkit-scrollbar{
+    display: none;
+}
 .list-category{
-    background-color: black;
-    height: 6vw;
+    box-sizing: border-box;
+    padding: 1%;
+    display: flex;
+    align-items: center;
+    background-color: #43c6ac;
+    border-radius: 5px;
+    height: 5vw;
+    font-size: 3.6vw;
     width: 15%;
 }
 input[type=checkbox]{
     transform: scale(1.4);
 }
-
-.list-content-date>div{
-    box-sizing: border-box;
-    padding: 1%;
-    width: 100%;
-    padding-top: 0;
-}
-.task-description{
-    height: 70%;
-}
-.task-date{
-    background-color: rebeccapurple;
-    height: 30%;
-}
-.task-date p{
+.note-date{
+    /* background-color: rebeccapurple; */
+    display: flex;
+    align-items: center;
+    background-color: #90e0ef;
+    border-radius: 10px;
+    border-bottom: 4px solid #1b263b70;
+    height: 4vw;
+    width: 30%;
     padding: 0;
+    padding-left: 2%;
     margin: 0;
-    font-size: 2.4vw;
+    font-size: 3vw;
 }
 
+.note-date i{
+    padding-right: 10%;
+    font-weight: 100;
+    font-size: 2vw;
+}
+
+.note-date span{
+    margin: 0;
+    padding-top: 2%;
+}

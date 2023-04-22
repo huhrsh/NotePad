@@ -40,29 +40,46 @@
                     <button id="delete-button" type="button"><i class="fa-solid fa-trash" style="color: #000000;"></i><p>Delete tasks</p></button>
                 </div>
             </form> 
-            
-            
-            <form class="form2" action="/delete-note" method="post">
-            <ul type="none" class="task-list">
-                    <li>
-                        <div class="task-container">
-                            <input type="checkbox">
-                            <div class="list-content-date">
-                                <div class="task-description">
-                                    to bring some balls
+            <h1 class="your-tasks">Your Tasks</h1>
+            <form class="form2" id="form2" action="/delete-note" method="post">
+                <ul type="none" class="task-list">
+                    <% for(let i of taskList) {%>
+                        <!-- getting the alphabetic value of month  -->
+                        <%date=new Date();%>
+                        <%date.setMonth(i.date.split('-')[1]);%>
+                        <%monthName=date.toLocaleString('en-US',{month: 'short' });%>
+                        <li>
+                            <div class="task-container">
+                                <input type="checkbox" name="id" value=<%=i._id%>>
+                                <div class="list-content-date">
+                                    <p class="note-description" ><%=i.description%></p>
+                                    <div class="note-date">
+                                        <% if(i.date==""){%>
+                                            <span>No Deadline</span>
+                                        <%}else{%>
+                                        <i class="fa-regular fa-calendar-days" style="color: #000000;"></i><span><%=monthName+' '+i.date.split('-')[2]+','+i.date.split('-')[0]%></span>
+                                        <%}%>
+                                    </div>
+                                    <!-- <div class="task-description">
+                                        <p class="note-description" ><%=i.description%></p>
+                                    </div>
+                                    <div class="task-date">
+                                        <p class="note-date" ><%=i.date%></p>
+                                    </div> -->
                                 </div>
-                                <div class="task-date">
-                                    <p>2023-04-25</p>
-                                </div>
+                                <% if(i.category!='idle'){ %>
+                                    <div class="list-category">
+                                        <%=i.category%>
+                                    </div>
+                                    <%}else{%>
+                                        <div style="opacity:0;"  class="list-category">
+                                        </div>
+                                <%}%>
                             </div>
-                            <div class="list-category">
-
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    <%}%>
                 </ul>
             </form>
-
         </main>        
         <script type="text/javascript" src="/js/script.js"></script>
     </body>
