@@ -1,9 +1,264 @@
-*{
-    font-family: transformers;
-    font-family: 'Space Crusaders';
+/* including the required fonts  */
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* css properties for h1 tag  */
+h1 {
+    font-family: Pacifico;
     font-size: 4vw;
-    color: white;
+    color: #ffffff;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    text-shadow: 3px 3px #03045e;
 }
-html{
-    background-color: darkslategray;
+
+/* giving background to the page  */
+html {
+    /* background-color: darkslategray; */
+    background: linear-gradient(to bottom, #43c6ac, #191654);
+    background: linear-gradient(-30deg, #007991, #78ffd6);
 }
+html::-webkit-scrollbar{
+    display:none;
+    /* width: 0.5vw; */
+}
+
+/* css for main container  */
+.main-container{
+    border-radius: 10px;
+    margin: auto;
+    width: 70vw;
+    height: auto;
+    background-color: #caf0f854;
+    display: flex;
+    flex-direction: column;
+    font-family: dongle;
+    font-size: 4vw;
+    /* font-family: poppins; */
+    /* background-color: #48bfe350; */
+}
+
+/* css properties for form  */
+.form1{
+    margin: 0;
+    width: 100%;
+    height: auto;
+    /* background-color: #007991; */
+    display: flex;
+    padding: 1%;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+.form1>div{
+    margin-bottom:5px ;
+}
+
+/* css properties for the description section  */
+.description{
+    background-color: #bbdefb;
+    background-color: #e3f2fd;
+    box-sizing: border-box;
+    padding: 1%;
+    padding-left: 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 10vw;
+    border-radius: 10px;
+    border-bottom: 4px solid #00296b80;
+}
+.description-heading{
+    height: 50%;
+    margin: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.description input{
+    font-family: dongle;
+    width: 100%;
+    height: 50%;    
+    background-color: #ffffff80;
+    font-size: 3vw;
+    border: none;
+    color: #00296b;
+    caret-color: #00296b;
+}
+input[type=text]:focus{
+    outline: none;
+}
+
+/* css properties for the category and date section  */
+.category-date{
+    background-color: #72efdd;
+    background-color: #e3f2fd;
+    box-sizing: border-box;
+    width: 100%;
+    height: 10vw;
+    border-radius: 10px;
+    border-bottom: 4px solid #00296b80;
+    display: flex;
+    padding: 1%;
+    flex-direction: row;
+
+}
+/* css for category section  */
+.category{
+    /* padding: 1%; */
+    border-right: 2px solid #00296b80;
+    width: 50%;
+}
+.category-heading{
+    height: 50%;
+    margin: 0;
+    padding-left: 1%;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.category-select{
+    width: 90%;
+    height: 4vw;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff80;
+    font-family: Dongle;
+    font-size: 3vw;
+    cursor: pointer;
+}
+.category-select:focus{
+    outline: none;
+}
+.category-select option{
+    font-size: 2vw;
+}
+/* css for date section  */
+.date{
+    padding-left: 1%;
+    width: 50%;
+}
+
+.date-heading{
+    width: 100%;
+    height: 50%;
+    margin: 0;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+.date-input{
+    cursor: pointer;
+    padding: 1%;
+    width: 70%;
+    height: 4vw;
+    border: none;
+    border-radius: 10px;
+    background-color: #ffffff80;
+    font-family: Dongle;
+    font-size: 3vw;
+    letter-spacing: 0.3vw;
+}
+.date-input:focus{
+    outline: none;
+}
+
+/* creating the button section  */
+.buttons{
+    background-color: red;
+    width: 100%;
+    height: 7vw;
+    border-radius: 10px;
+    padding:1%;
+    box-sizing: border-box;
+    background-color: #e3f2fd;
+    border-bottom: 4px solid #00296b80;
+    display: flex;
+    justify-content: space-around;
+}
+
+.buttons button{
+    /* background-color:; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3.4vw;
+    font-family: dongle;
+    border-radius: 10px;
+    width: 30%;
+    background-color: #90e0ef;
+    border: none;
+    border-bottom: 4px solid #00296b80;
+    cursor: pointer;
+}
+.buttons button p{
+    padding-top: 3%;
+}
+
+
+.buttons button i{
+    font-size: 2vw;
+    margin-right: 1vw;
+}
+
+#delete-button{
+    background-color: #00b4d8;
+}
+
+/* creating the individual task section  */
+.form2{
+    padding: 1%;
+    margin: 0;
+}
+.task-list{
+    padding: 0;
+    margin: 0;
+    
+}
+.task-container{
+    width: 100%;
+    min-height: 10vw;
+    display: flex;
+    padding: 1%;
+    box-sizing: border-box;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #778da9;
+    border-bottom: 5px solid #1b263b70;
+    justify-content: space-between;
+}
+.list-content-date{
+    background-color: red;
+    width: 80%;
+    height: 10vw;
+    display: flex;
+    flex-direction: column;
+}
+.list-category{
+    background-color: black;
+    height: 6vw;
+    width: 15%;
+}
+input[type=checkbox]{
+    transform: scale(1.4);
+}
+
+.list-content-date>div{
+    box-sizing: border-box;
+    padding: 1%;
+    width: 100%;
+    padding-top: 0;
+}
+.task-description{
+    height: 70%;
+}
+.task-date{
+    background-color: rebeccapurple;
+    height: 30%;
+}
+.task-date p{
+    padding: 0;
+    margin: 0;
+    font-size: 2.4vw;
+}
+
