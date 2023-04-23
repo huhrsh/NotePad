@@ -5,16 +5,18 @@
         </title>
         <link rel="icon" type="image/x-icon" href="/images/note-icon.svg">
         <script src="https://kit.fontawesome.com/501910dff8.js" crossorigin="anonymous"></script>
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
         <link rel="stylesheet" href="/css/home.css">
     </head>
     <body>
-        <h1 class="animate__animated animate__zoomInDown animate__slower" >ToDo List</h1>
-        <main class="main-container animate__animated animate__fadeInUp animate__slow">
-            <form class="form1" action="/create-note" method="post" >
+        <!-- <h1 class="animate__animated animate__zoomInDown animate__slower" >ToDo List</h1> -->
+        <h1>ToDo List</h1>
+        <!-- <main class="main-container animate__animated animate__fadeIn animate__slow"> -->
+        <main class="main-container">
+            <form class="form1" id="form1" action="/create-note" method="post" >
                 <div class="description">
                     <p class="description-heading" >description</p>
-                    <input name="description" type="text" placeholder="What do you need to do?" required>
+                    <input name="description" id="text-input" type="text" placeholder="What do you need to do?" required>
                 </div>
                 <div class="category-date">
                     <div class="category">
@@ -36,8 +38,10 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <button id="add-button" type="submit"><i class="fa-solid fa-plus" style="color: #000000;"></i><p>Add Task</p></button>
-                    <button id="delete-button" type="button"><i class="fa-solid fa-trash" style="color: #000000;"></i><p>Delete tasks</p></button>
+                    <!-- <button id="add-button" type="submit" class="animate__animated animate__faster"><i class="fa-solid fa-plus" style="color: #000000;"></i><p>Add Task</p></button>
+                    <button id="delete-button" type="button" class="animate__animated animate__faster"><i class="fa-solid fa-trash" style="color: #000000;"></i><p>Delete tasks</p></button> -->
+                    <button id="add-button" type="submit" class="animate__animated"><i class="fa-solid fa-plus" style="color: #000000;"></i><p>Add Task</p></button>
+                    <button id="delete-button" type="button" class="animate__animated"><i class="fa-solid fa-trash" style="color: #000000;"></i><p>Delete tasks</p></button>
                 </div>
             </form> 
             <h1 class="your-tasks">Your Tasks</h1>
@@ -50,7 +54,7 @@
                         <%monthName=date.toLocaleString('en-US',{month: 'short' });%>
                         <li>
                             <div class="task-container">
-                                <input type="checkbox" name="id" value=<%=i._id%>>
+                                <input type="checkbox" class="tasks-todo" name="id" value=<%=i._id%>>
                                 <div class="list-content-date">
                                     <p class="note-description" ><%=i.description%></p>
                                     <div class="note-date">
@@ -60,12 +64,6 @@
                                         <i class="fa-regular fa-calendar-days" style="color: #000000;"></i><span><%=monthName+' '+i.date.split('-')[2]+','+i.date.split('-')[0]%></span>
                                         <%}%>
                                     </div>
-                                    <!-- <div class="task-description">
-                                        <p class="note-description" ><%=i.description%></p>
-                                    </div>
-                                    <div class="task-date">
-                                        <p class="note-date" ><%=i.date%></p>
-                                    </div> -->
                                 </div>
                                 <% if(i.category!='idle'){ %>
                                     <div class="list-category">

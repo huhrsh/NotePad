@@ -1,12 +1,11 @@
 const { model } = require('mongoose');
 const Task=require('../models/tasks');
-
 module.exports.home=function(req,res){
     Task.find({})
     .then((taskList)=>{
         return res.render('home',{
             title:'ToDo List',
-            taskList:taskList
+            taskList:taskList,            
         })
     })
     .catch((err)=>{
@@ -23,7 +22,7 @@ module.exports.createTask=function(req,res){
     })
     .then((newTask)=>{
         console.log(newTask);
-        return res.redirect('back');
+        return res.redirect('/');
     })
     .catch((err)=>{
         console.log("There's an error in creating contact");
@@ -33,6 +32,7 @@ module.exports.createTask=function(req,res){
 
 module.exports.deleteNote=function(req,res){
     console.log(req.body.id);
+    // console.log(req.body.id);
     Task.deleteMany({ _id: { $in: req.body.id } })
     .then((tasksDeleted)=>{
         console.log("The deleted tasks are: ",tasksDeleted);

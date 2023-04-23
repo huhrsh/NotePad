@@ -133,7 +133,7 @@ input[type=text]:focus{
     outline: none;
 }
 .category-select option{
-    font-size: 2vw;
+    font-size: 2.6vw;
 }
 /* css for date section  */
 .date{
@@ -263,10 +263,15 @@ input[type=text]:focus{
     padding: 1%;
     display: flex;
     align-items: center;
+    justify-content: center;
     background-color: #43c6ac;
     border-radius: 5px;
     height: 5vw;
-    font-size: 3.6vw;
+    font-family: poppins;
+    font-weight: 600;
+    /* color: white; */
+    /* text-shadow: 1px 1px white; */
+    font-size: 2vw;
     width: 15%;
 }
 input[type=checkbox]{
@@ -296,4 +301,14 @@ input[type=checkbox]{
 .note-date span{
     margin: 0;
     padding-top: 2%;
+}
+
+
+@media screen and (max-width:700px) {
+    .main-container{
+        width: 90vw;
+    }
+    input[type=checkbox]{
+        transform: scale(1);
+    }
 }
