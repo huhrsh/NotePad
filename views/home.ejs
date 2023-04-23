@@ -1,84 +1,111 @@
 <html>
-    <head>
-        <title>
-            <%=title%>
-        </title>
-        <link rel="icon" type="image/x-icon" href="/images/note-icon.svg">
-        <script src="https://kit.fontawesome.com/501910dff8.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-        <link rel="stylesheet" href="/css/home.css">
-    </head>
-    <body>
-        <!-- <h1 class="animate__animated animate__zoomInDown animate__slower" >ToDo List</h1> -->
-        <h1>ToDo List</h1>
-        <!-- <main class="main-container animate__animated animate__fadeIn animate__slow"> -->
-        <main class="main-container">
-            <form class="form1" id="form1" action="/create-note" method="post" >
-                <div class="description">
-                    <p class="description-heading" >description</p>
-                    <input name="description" id="text-input" type="text" placeholder="What do you need to do?" required>
+
+<head>
+    <title>
+        <%=title%>
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/images/note-icon.svg">
+    <script src="https://kit.fontawesome.com/501910dff8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <!-- including css file  -->
+    <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+    <h1>ToDo List</h1>
+    <!-- main container that contains everything -->
+    <main class="main-container">
+        <!-- form for taking input of task description, deadline and label  -->
+        <form class="form1" id="form1" action="/create-note" method="post">
+            <!-- description section  -->
+            <div class="description">
+                <p class="description-heading">description</p>
+                <input name="description" id="text-input" type="text" placeholder="What do you need to do?" required>
+            </div>
+            <!-- category and date section  -->
+            <div class="category-date">
+                <div class="category">
+                    <!-- all the category options  -->
+                    <p class="category-heading">Category</p>
+                    <select class="category-select" name="category">
+                        <option value="idle">Choose a category</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Work">Work</option>
+                        <option value="Home">Home</option>
+                        <option value="Chores">Chores</option>
+                        <option value="Others">Others</option>
+                    </select>
                 </div>
-                <div class="category-date">
-                    <div class="category">
-                        <p class="category-heading">Category</p>
-                        <select class="category-select" name="category">
-                            <option value="idle">Choose a category</option>
-                            <option value="Personal">Personal</option>
-                            <option value="Work">Work</option>
-                            <option value="Home">Home</option>
-                            <option value="Chores">Chores</option>
-                            <option value="Others">Others</option>
-                        </select>
-                    </div>
-                    <div class="date">
-                        <p class="date-heading">due date</p>
-                        <input name="date" id="date" class="date-input" type="date" 
-                        min=minDate
-                        >
-                    </div>
+                <!-- date input  -->
+                <div class="date">
+                    <p class="date-heading">due date</p>
+                    <input name="date" id="date" class="date-input" type="date" min=minDate>
                 </div>
-                <div class="buttons">
-                    <!-- <button id="add-button" type="submit" class="animate__animated animate__faster"><i class="fa-solid fa-plus" style="color: #000000;"></i><p>Add Task</p></button>
-                    <button id="delete-button" type="button" class="animate__animated animate__faster"><i class="fa-solid fa-trash" style="color: #000000;"></i><p>Delete tasks</p></button> -->
-                    <button id="add-button" type="submit" class="animate__animated"><i class="fa-solid fa-plus" style="color: #000000;"></i><p>Add Task</p></button>
-                    <button id="delete-button" type="button" class="animate__animated"><i class="fa-solid fa-trash" style="color: #000000;"></i><p>Delete tasks</p></button>
-                </div>
-            </form> 
-            <h1 class="your-tasks">Your Tasks</h1>
-            <form class="form2" id="form2" action="/delete-note" method="post">
-                <ul type="none" class="task-list">
-                    <% for(let i of taskList) {%>
-                        <!-- getting the alphabetic value of month  -->
-                        <%date=new Date();%>
-                        <%date.setMonth(i.date.split('-')[1]);%>
-                        <%monthName=date.toLocaleString('en-US',{month: 'short' });%>
-                        <li>
-                            <div class="task-container">
-                                <input type="checkbox" class="tasks-todo" name="id" value=<%=i._id%>>
-                                <div class="list-content-date">
-                                    <p class="note-description" ><%=i.description%></p>
-                                    <div class="note-date">
-                                        <% if(i.date==""){%>
-                                            <span>No Deadline</span>
-                                        <%}else{%>
-                                        <i class="fa-regular fa-calendar-days" style="color: #000000;"></i><span><%=monthName+' '+i.date.split('-')[2]+','+i.date.split('-')[0]%></span>
-                                        <%}%>
-                                    </div>
-                                </div>
-                                <% if(i.category!='idle'){ %>
-                                    <div class="list-category">
-                                        <%=i.category%>
-                                    </div>
+            </div>
+            <!-- creating the buttons section  -->
+            <div class="buttons">
+                <!-- add button  -->
+                <button id="add-button" type="submit" class="animate__animated">
+                    <i class="fa-solid fa-plus" style="color: #000000;"></i>
+                    <p>Add Task</p>
+                </button>
+                <!-- delete button  -->
+                <button id="delete-button" type="button" class="animate__animated">
+                    <i class="fa-solid fa-trash" style="color: #000000;"></i>
+                    <p>Delete tasks</p>
+                </button>
+            </div>
+        </form>
+        <!-- section that contains all the tasks  -->
+        <h1 class="your-tasks">Your Tasks</h1>
+        <!-- form to select the tasks to be deleted  -->
+        <form class="form2" id="form2" action="/delete-note" method="post">
+            <ul type="none" class="task-list">
+                <!-- displaying all the tasks  -->
+                <% for(let i of taskList) {%>
+                    <!-- getting the alphabetic value of month  -->
+                    <%date=new Date();%>
+                    <%date.setMonth(i.date.split('-')[1]);%>
+                    <%monthName=date.toLocaleString('en-US',{month: 'short' });%>
+                    <li>
+                        <!-- creating individual task container  -->
+                        <div class="task-container">
+                            <!-- checkbox  -->
+                            <input type="checkbox" class="tasks-todo" name="id" value=<%=i._id%>>
+                            <!-- description  -->
+                            <div class="list-content-date">
+                                <p class="note-description">
+                                    <%=i.description%>
+                                </p>
+                                <div class="note-date">
+                                    <% if(i.date=="" ){%>
+                                        <span>No Deadline</span>
                                     <%}else{%>
-                                        <div style="opacity:0;"  class="list-category">
-                                        </div>
-                                <%}%>
+                                        <i class="fa-regular fa-calendar-days"
+                                            style="color: #000000;"></i><span>
+                                            <%=monthName+' '+i.date.split('-')[2]+','+i.date.split('-')[0]%>
+                                        </span>
+                                    <%}%>
+                                </div>
                             </div>
-                        </li>
-                    <%}%>
-                </ul>
-            </form>
-        </main>        
-        <script type="text/javascript" src="/js/script.js"></script>
-    </body>
+                            <!-- category  -->
+                            <% if(i.category!='idle' ){ %>
+                                <div class="list-category">
+                                    <%=i.category%>
+                                </div>
+                            <%}else{%>
+                                <div style="opacity:0;" class="list-category">
+                                </div>
+                            <%}%>
+                        </div>
+                    </li>
+                <%}%>
+            </ul>
+        </form>
+    </main>
+    <!-- including js  -->
+    <script type="text/javascript" src="/js/script.js"></script>
+</body>
+
 </html>

@@ -1,11 +1,17 @@
-const express=require('express');
-const router=express.Router();
-console.log('routes working good sir');
-const homeController=require('../controllers/home_controller');
+// require express 
+const express = require('express');
+const router = express.Router();
+// check to see if it is working 
+console.log('routes are working');
+// require home controller 
+const homeController = require('../controllers/home_controller');
+// route for home 
+router.get('/', homeController.home);
 
-router.get('/',homeController.home);
+// route for creating note 
+router.post('/create-note', homeController.createTask);
 
-module.exports=router;
+// route for deleting note 
+router.post('/delete-note', homeController.deleteNote);
 
-router.post('/create-note',homeController.createTask);
-router.post('/delete-note',homeController.deleteNote);
+module.exports = router;
